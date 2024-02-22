@@ -14,7 +14,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const traducaoClima = {
     "few clouds": "Poucas nuvens",
-    "scattered clouds": "Nuvens dispersas"
+    "scattered clouds": "Nuvens dispersas",
+    "overcast clouds": "Nublado"
 }
 
 app.get('/climatempo/:cidade', async(req,res) => {
