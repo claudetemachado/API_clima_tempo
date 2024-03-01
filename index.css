@@ -47,6 +47,7 @@ body{
     border-width: 1px;
     width: 350px;
     margin-left: -30px;
+
 }
 
 #botao{    
@@ -92,7 +93,8 @@ body{
 #temp{
     color: black;
     font-family: 'Poppins', sans-serif;
-    font-size: 45px;
+    font-size: 55px;
+   
     text-align: center;
     margin: 0;
 }
@@ -113,4 +115,12 @@ body{
 #vento{
     color: black;
     font-family: 'Poppins', sans-serif;
+}
+
+#localizacao{
+    margin: 0;
+    height: 30px;
+    width: auto;
+    margin-top: 28px;
+    margin-left: 5px;
 }

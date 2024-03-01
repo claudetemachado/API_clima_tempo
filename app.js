@@ -35,7 +35,7 @@ app.get('/climatempo/:cidade', async(req,res) => {
             const clima = traducaoClima[response.data.weather[0].description] || response.data.weather[0].description;
             const weatherData = {
                 Local: response.data.name,
-                Temperatura: response.data.main,
+                Temperatura: response.data.main.temp,
                 Umidade: response.data.main.humidity,
                 VelocidadeDoVento: response.data.wind.speed,
                 Clima: clima

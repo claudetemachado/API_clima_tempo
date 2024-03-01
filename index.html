@@ -45,9 +45,14 @@
              const formularioPesquisa = document.querySelector('.search');
 
              if (data.Temperatura) {
+
+              
+              const temperaturaArredondada = Math.round(data.Temperatura);
+              const cidadeDecodificada = decodeURIComponent(data.Local);
+
                  resultadoPesquisa.innerHTML = `
-                     <p id="local"><br>${city}</p>
-                     <p id="temp"><br> ${data.Temperatura} °C</p>
+                     <p id="local">  <img src="imagens/local.png" alt="localização" id="localizacao"> ${cidadeDecodificada}</p>
+                     <p id="temp"><br> ${temperaturaArredondada} °C</p>
                      <p id="clima"><br> ${data.Clima}</p>
                      <p id="umidade">Umidade <br> ${data.Umidade}%</p>
                      <p id="vento">Vento <br> ${data.VelocidadeDoVento} m/s</p>
