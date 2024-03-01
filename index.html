@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+  <link rel="stylesheet" href="index.css">
+  <title>Consulta do clima</title>
+  <script src="app.js"></script>
+</head>
+<body>
+  <p id="consulta">Consulta</p>
+  <img src="imagens/nuvens-e-sol.png" alt="Sol e nuvem" id="icone">
+  <h1 id="climatempo">Clima tempo</h1>
+
+  <div class="search">
+    <header><i class="bx bx-left-arrow-al"></i></header>
+    <section class="pesquisa">
+      <input type="text" id="city" placeholder="Consulte o clima na cidade de..." spellcheck="false">
+      <button type="submit" id="botao">Consultar clima</button>
+    </section>
+
+  </div>
+
+  <div id="resultadoPesquisa">
+    <div id="fundo">
+      <header><i class="bx bx-left-arrow-al"></i></header>
+    </div>
+  </div>
+
+
+
+  <script>
+    document.getElementById("botao").addEventListener("click", function(event) {
+         event.preventDefault();
+
+         const city = document.getElementById("city").value;
+
+         fetch(`http://localhost:3000/climatempo/${city}`)
+         .then((response) => response.json())
+         .then(data => {
+             const resultadoPesquisa = document.getElementById('fundo');
+             const formularioPesquisa = document.querySelector('.search');
+
+             if (data.Temperatura) {
+                 resultadoPesquisa.innerHTML = `
+                     <p id="local"><br>${city}</p>
+                     <p id="temp"><br> ${data.Temperatura} °C</p>
+                     <p id="clima"><br> ${data.Clima}</p>
+                     <p id="umidade">Umidade <br> ${data.Umidade}%</p>
+                     <p id="vento">Vento <br> ${data.VelocidadeDoVento} m/s</p>
+                 `;
+                 formularioPesquisa.style.display = "none";
+             } else {
+                 resultadoPesquisa.innerHTML = "<p>Erro ao obter dados meteorológicos</p>";
+             }
+         })
+         .catch((error) => console.error('Erro ao obter dados'));
+     });
+ </script>
+
+</body>
+<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</html>
